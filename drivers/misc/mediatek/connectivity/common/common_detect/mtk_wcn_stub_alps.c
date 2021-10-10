@@ -327,8 +327,8 @@ int mtk_wcn_cmb_stub_query_ctrl(void)
 
 	if (cmb_stub_thermal_ctrl_cb)
 		temp = (*cmb_stub_thermal_ctrl_cb) ();
-	else
-		CMB_STUB_LOG_WARN("[cmb_stub] thermal_ctrl_cb null\n");
+//	else
+//		CMB_STUB_LOG_WARN("[cmb_stub] thermal_ctrl_cb null\n");
 
 	return temp;
 }
