@@ -154,7 +154,8 @@ static struct kobj_attribute _name##_attr = {	\
 
 #define vcorefs_emerg(fmt, args...)	pr_emerg(fmt, ##args)
 #define vcorefs_alert(fmt, args...)	pr_alert(fmt, ##args)
-#define vcorefs_crit(fmt, args...)	pr_crit(fmt, ##args)
+//#define vcorefs_crit(fmt, args...)	pr_crit(fmt, ##args)
+#define vcorefs_crit(fmt, args...)	pr_debug(fmt, ##args)
 #define vcorefs_err(fmt, args...)	pr_err(fmt, ##args)
 #define vcorefs_warn(fmt, args...)	pr_warn(fmt, ##args)
 #define vcorefs_notice(fmt, args...)	pr_notice(fmt, ##args)
@@ -649,10 +650,10 @@ static int kick_dvfs_by_index(struct pwr_ctrl *pwrctrl, enum dvfs_kicker kicker,
 	int r;
 	bool in_autok = false;
 
-	vcorefs_crit("%s[%d], %u kick: lock = %u, index = %u, curr_index = %u (%u)\n",
-		__func__, __LINE__, kicker, pwrctrl->sdio_lock, index, curr_opp_index, prev_opp_index);
-	vcorefs_crit("%s[%d], vcore_dvfs_before_late_init=%d, dtcm_ready=%d, md32_mobile_log_ready=%d\n",
-		__func__, __LINE__, vcore_dvfs_before_late_init, dtcm_ready, md32_mobile_log_ready);
+//	vcorefs_crit("%s[%d], %u kick: lock = %u, index = %u, curr_index = %u (%u)\n",
+//		__func__, __LINE__, kicker, pwrctrl->sdio_lock, index, curr_opp_index, prev_opp_index);
+//	vcorefs_crit("%s[%d], vcore_dvfs_before_late_init=%d, dtcm_ready=%d, md32_mobile_log_ready=%d\n",
+//		__func__, __LINE__, vcore_dvfs_before_late_init, dtcm_ready, md32_mobile_log_ready);
 
 	if (curr_opp_index == index && curr_opp_index == prev_opp_index)
 		return 0;

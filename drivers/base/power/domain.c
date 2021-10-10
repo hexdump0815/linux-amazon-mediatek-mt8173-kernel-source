@@ -235,10 +235,10 @@ static int __pm_genpd_poweron(struct generic_pm_domain *genpd)
 			genpd->power_on_latency_ns = elapsed_ns;
 			genpd->max_off_time_changed = true;
 			genpd_recalc_cpu_exit_latency(genpd);
-			if (genpd->name)
-				pr_warning("%s: Power-on latency exceeded, "
-					"new value %lld ns\n", genpd->name,
-					elapsed_ns);
+//			if (genpd->name)
+//				pr_warning("%s: Power-on latency exceeded, "
+//					"new value %lld ns\n", genpd->name,
+//					elapsed_ns);
 		}
 	}
 
@@ -572,10 +572,10 @@ static int pm_genpd_poweroff(struct generic_pm_domain *genpd)
 		if (elapsed_ns > genpd->power_off_latency_ns) {
 			genpd->power_off_latency_ns = elapsed_ns;
 			genpd->max_off_time_changed = true;
-			if (genpd->name)
-				pr_warning("%s: Power-off latency exceeded, "
-					"new value %lld ns\n", genpd->name,
-					elapsed_ns);
+//			if (genpd->name)
+//				pr_warning("%s: Power-off latency exceeded, "
+//					"new value %lld ns\n", genpd->name,
+//					elapsed_ns);
 		}
 	}
 

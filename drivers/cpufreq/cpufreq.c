@@ -1075,7 +1075,7 @@ static void cpufreq_policy_put_kobj(struct cpufreq_policy *policy)
 	cmp = &policy->kobj_unregister;
 	up_read(&policy->rwsem);
 	kobject_put(kobj);
-	pr_info("%s[%d], after kobject_put(kobj), refcount=%ul;\n", __func__, __LINE__, kobj->kref.refcount);
+//	pr_info("%s[%d], after kobject_put(kobj), refcount=%ul;\n", __func__, __LINE__, kobj->kref.refcount);
 
 	/*
 	 * We need to make sure that the underlying kobj is
