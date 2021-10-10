@@ -59,7 +59,7 @@
 #include <linux/irq.h>
 #include <linux/reboot.h>
 
-#if defined(CONFIG_AMAZON_METRICS_LOG)
+// #if defined(CONFIG_AMAZON_METRICS_LOG)
 
 #if defined(CONFIG_EARLYSUSPEND)
 #include <linux/earlysuspend.h>
@@ -157,7 +157,7 @@ struct metrics_capacity {
 extern void bq24297_get_fault_type(unsigned char *type);
 
 extern unsigned long get_virtualsensor_temp(void);
-#endif /* CONFIG_AMAZON_METRICS_LOG */
+// #endif /* CONFIG_AMAZON_METRICS_LOG */
 
 struct battery_common_data g_bat;
 struct fg_error_detection g_fg_err_det;
@@ -2125,7 +2125,7 @@ static DEVICE_ATTR(Custom_Charging_Current, 0664, show_Custom_Charging_Current,
 static ssize_t show_Custom_PlugIn_Time(struct device *dev,
 	struct device_attribute *attr, char *buf)
 {
-	pr_notice("custom plugin_time = %lu\n", g_custom_plugin_time);
+//	pr_notice("custom plugin_time = %lu\n", g_custom_plugin_time);
 	return sprintf(buf, "0");
 }
 
@@ -2135,7 +2135,7 @@ static ssize_t store_Custom_PlugIn_Time(struct device *dev,
 	int ret;
 
 	ret = kstrtoul(buf, 0, &g_custom_plugin_time);
-	pr_notice("custom plugin_time = %lu\n", g_custom_plugin_time);
+//	pr_notice("custom plugin_time = %lu\n", g_custom_plugin_time);
 	if (g_custom_plugin_time > PLUGIN_THRESHOLD)
 		g_custom_plugin_time = PLUGIN_THRESHOLD;
 
@@ -2164,7 +2164,7 @@ static DEVICE_ATTR(charger_plugin_counter, 0444, show_charger_plugin_counter, NU
 static ssize_t show_Custom_Charging_Mode(struct device *dev,
 	struct device_attribute *attr, char *buf)
 {
-	pr_notice("Charging mode = %u\n", g_custom_charging_mode);
+//	pr_notice("Charging mode = %u\n", g_custom_charging_mode);
 	return sprintf(buf, "%u\n", g_custom_charging_mode);
 }
 
@@ -2174,7 +2174,7 @@ static ssize_t store_Custom_Charging_Mode(struct device *dev,
 	int ret;
 
 	ret = kstrtouint(buf, 0, &g_custom_charging_mode);
-	pr_notice("Charging mode= %u\n", g_custom_charging_mode);
+//	pr_notice("Charging mode= %u\n", g_custom_charging_mode);
 
 	return size;
 }
@@ -2230,8 +2230,8 @@ static bool check_top_off_state(void)
 			reset_plug_in_timer();
 		}
 
-		pr_notice("[%s] %d, %d, %d, %lu, %d\r\n", __func__, BMT_status.UI_SOC,
-			BMT_status.SOC, top_off_flag, g_custom_plugin_time, g_custom_fake_full);
+//		pr_notice("[%s] %d, %d, %d, %lu, %d\r\n", __func__, BMT_status.UI_SOC,
+//			BMT_status.SOC, top_off_flag, g_custom_plugin_time, g_custom_fake_full);
 	} else
 		top_off_flag = false;
 
@@ -2290,13 +2290,13 @@ static int mt_battery_high_fg_error_det(void)
 
 	}
 
-	if (g_fg_err_det.is_detected)
-		pr_notice("%s: %d [%d %d] [%d %d] %d [%d %d %d] %d %ld\n",
-			__func__,
-			data->boot_reason, data->ui_soc, data->soc,
-			data->dod0, data->dod1, data->hw_ocv_init,
-			data->hw_soc_init, data->sw_soc_init, data->rtc_soc_init,
-			data->soc_gap, data->time_gap);
+//	if (g_fg_err_det.is_detected)
+//		pr_notice("%s: %d [%d %d] [%d %d] %d [%d %d %d] %d %ld\n",
+//			__func__,
+//			data->boot_reason, data->ui_soc, data->soc,
+//			data->dod0, data->dod1, data->hw_ocv_init,
+//			data->hw_soc_init, data->sw_soc_init, data->rtc_soc_init,
+//			data->soc_gap, data->time_gap);
 
 	return 0;
 }
@@ -3843,8 +3843,8 @@ void BAT_thread(void)
 			bat_demo_flag = false;
 #endif
 
-		pr_notice("total_time_plug_in(%lu), cv(%d)\r\n",
-				total_time_plug_in, g_custom_charging_cv);
+//		pr_notice("total_time_plug_in(%lu), cv(%d)\r\n",
+//				total_time_plug_in, g_custom_charging_cv);
 
 		mt_battery_CheckBatteryStatus();
 		mt_battery_charging_algorithm();

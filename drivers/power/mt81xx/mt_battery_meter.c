@@ -1382,8 +1382,8 @@ void dod_init(void)
 	    || ((g_rtc_fg_soc != 0)
 		&& (get_boot_reason() == BR_WDT_BY_PASS_PWK || get_boot_reason() == BR_WDT
 		    || get_boot_mode() == RECOVERY_BOOT))) {
-		pr_info("[%s]: overwrite soc_v[%d] by soc_rtc[%d]\n",
-				__func__, gFG_capacity_by_v, g_rtc_fg_soc);
+//		pr_info("[%s]: overwrite soc_v[%d] by soc_rtc[%d]\n",
+//				__func__, gFG_capacity_by_v, g_rtc_fg_soc);
 		gFG_capacity_by_v = g_rtc_fg_soc;
 	}
 
@@ -1775,16 +1775,16 @@ void fgauge_algo_run(void)
 	}
 
 /* 5. Logging */
-	pr_info("[fg_data:0] GG init cond. hw_ocv=%d, HW_SOC=%d, SW_SOC=%d, RTC_SOC=%d, boot_reason(%d)\n",
-		 g_hw_ocv_debug, g_hw_soc_debug, g_sw_soc_debug, g_rtc_soc_debug, g_boot_reason_debug);
+//	pr_info("[fg_data:0] GG init cond. hw_ocv=%d, HW_SOC=%d, SW_SOC=%d, RTC_SOC=%d, boot_reason(%d)\n",
+//		 g_hw_ocv_debug, g_hw_soc_debug, g_sw_soc_debug, g_rtc_soc_debug, g_boot_reason_debug);
 
-	pr_info("[fg_data:1] %d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
-		 gFG_Is_Charging, gFG_current, gFG_columb, gFG_voltage, gFG_capacity_by_v,
-		 gFG_capacity_by_c, gFG_capacity_by_c_init, gFG_BATT_CAPACITY,
-		 gFG_BATT_CAPACITY_aging, gFG_compensate_value, gFG_ori_voltage,
-		 p_bat_meter_data->ocv_board_compesate, p_bat_meter_data->r_fg_board_slope,
-		 gFG_voltage_init, p_bat_meter_data->min_error_offset, gFG_DOD0, gFG_DOD1,
-		 p_bat_meter_data->car_tune_value, p_bat_meter_data->aging_tuning_value);
+//	pr_info("[fg_data:1] %d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
+//		 gFG_Is_Charging, gFG_current, gFG_columb, gFG_voltage, gFG_capacity_by_v,
+//		 gFG_capacity_by_c, gFG_capacity_by_c_init, gFG_BATT_CAPACITY,
+//		 gFG_BATT_CAPACITY_aging, gFG_compensate_value, gFG_ori_voltage,
+//		 p_bat_meter_data->ocv_board_compesate, p_bat_meter_data->r_fg_board_slope,
+//		 gFG_voltage_init, p_bat_meter_data->min_error_offset, gFG_DOD0, gFG_DOD1,
+//		 p_bat_meter_data->car_tune_value, p_bat_meter_data->aging_tuning_value);
 	update_fg_dbg_tool_value();
 }
 
@@ -2289,8 +2289,8 @@ s32 battery_meter_trans_battery_percentage(s32 d_val)
 	if (d_val > 100)
 		d_val = 100;
 
-	pr_info("[fg_data:2] %d,%d,%d,%d,%d,%d\n", temp_val, C_0mA,
-			C_600mA, d_val_before, d_val, g_currentfactor);
+//	pr_info("[fg_data:2] %d,%d,%d,%d,%d,%d\n", temp_val, C_0mA,
+//			C_600mA, d_val_before, d_val, g_currentfactor);
 
 	return d_val;
 }
@@ -2936,8 +2936,8 @@ static ssize_t copy_battery_profile(const char *buffer, int count)
 		ret = 0;
 	}
 
-	pr_info("%s copy from user pass profile_index: %d and count %d with ret %d\n",
-			__func__, profile_index, count, ret);
+//	pr_info("%s copy from user pass profile_index: %d and count %d with ret %d\n",
+//			__func__, profile_index, count, ret);
 	return ret;
 }
 
@@ -2986,8 +2986,8 @@ static ssize_t copy_r_profile(const char *buffer, int count)
 		ret = 0;
 	}
 
-	pr_info("%s copy from user pass profile_index: %d and count %d with ret %d\n",
-			__func__, profile_index, count, ret);
+//	pr_info("%s copy from user pass profile_index: %d and count %d with ret %d\n",
+//			__func__, profile_index, count, ret);
 	return ret;
 
 }
@@ -3027,8 +3027,8 @@ static ssize_t battery_cvr_battery_profile_index_write(struct file *file, const 
 		return -EFAULT;
 	}
 
-	pr_info("%s end with profile_index %d and count %d\n",
-			__func__, profile_index, (int)count);
+//	pr_info("%s end with profile_index %d and count %d\n",
+//			__func__, profile_index, (int)count);
 	return count;
 }
 
@@ -3127,8 +3127,8 @@ static ssize_t battery_cvr_q_max_write(struct file *file, const char *buffer, si
 	}
 
 
-	pr_info("%s copy from user profile_index %d, count %d and ret %d\n",
-			__func__, profile_index, (int)count, ret);
+//	pr_info("%s copy from user profile_index %d, count %d and ret %d\n",
+//			__func__, profile_index, (int)count, ret);
 	return ret;
 }
 
@@ -3159,19 +3159,19 @@ static int init_proc_battery_cvr(void)
 	} else {
 		proc_create("battery_cvr_battery_profile_index", S_IRUGO | S_IWUSR, battery_cvr_dir,
 					&battery_cvr_battery_profile_index_proc_fops);
-		pr_info("proc_create battery_profile_index_proc_fops\n");
+//		pr_info("proc_create battery_profile_index_proc_fops\n");
 
 		proc_create("battery_cvr_battery_profile", S_IRUGO | S_IWUSR, battery_cvr_dir,
 					&battery_cvr_battery_profile_proc_fops);
-		pr_info("proc_create battery_profile_proc_fops\n");
+//		pr_info("proc_create battery_profile_proc_fops\n");
 
 		proc_create("battery_cvr_r_profile", S_IRUGO | S_IWUSR, battery_cvr_dir,
 					&battery_cvr_r_profile_proc_fops);
-		pr_info("proc_create battery_r_profile_proc_fops\n");
+//		pr_info("proc_create battery_r_profile_proc_fops\n");
 
 		proc_create("battery_cvr_q_max", S_IRUGO | S_IWUSR, battery_cvr_dir,
 						&battery_cvr_q_max_proc_fops);
-		pr_info("proc_create battery_q_max_proc_fops\n");
+//		pr_info("proc_create battery_q_max_proc_fops\n");
 	}
 
 	return 0;

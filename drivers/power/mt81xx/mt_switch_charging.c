@@ -308,8 +308,8 @@ static int select_jeita_cv(void)
 	if (g_custom_charging_mode) /* For demo unit */
 		cv_voltage = BATTERY_VOLT_04_096000_V;
 
-	pr_info("[%s] CV(%d) custom CV(%d)\r\n",
-			__func__, cv_voltage, g_custom_charging_cv);
+//	pr_info("[%s] CV(%d) custom CV(%d)\r\n",
+//			__func__, cv_voltage, g_custom_charging_cv);
 
 	return cv_voltage;
 }
